@@ -8,6 +8,34 @@
         <input type="text" id="title" name="title" placeholder="Enter report title">
     </div>
 
+    <div class="input-group">
+        <label for="crop">Crop:</label>
+        <select id="crop" name="crop">
+            <option value="broccoli">Broccoli</option>
+            <option value="kale" selected>Kale</option>
+            <option value="peas">Peas</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="field">Field:</label>
+        <select id="field" name="field">
+            <option value="all"selected>All</option>
+            <option value="chuau-1">Chuau-1</option>
+            <option value="sq7">SQ7</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" name="start-date" value="2020-05-05" min="2014-01-01" max="2022-01-01">
+    </div>
+
+    <div class="input-group">
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="end-date" value="2020-05-15" min="2020-05-05" max="2022-01-01">
+    </div>
+
     <h1>My Sample Harvest Report</h1>
 
     <h3>Details:</h3>
@@ -26,7 +54,7 @@
     <div class="input-group">
         <button type="submit">Generate Report</button>
     </div>
-    
+
 </html>
 
 
