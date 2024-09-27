@@ -12,9 +12,9 @@
 
         <div class="input-group">
             <label for="crop">Crop:</label>
-            <select id="crop" name="crop">
+            <select id="crop" name="crop" v-model="reportCrop">
                 <option value="broccoli">Broccoli</option>
-                <option value="kale" selected>Kale</option>
+                <option value="kale">Kale</option>
                 <option value="peas">Peas</option>
             </select>
         </div>
@@ -22,7 +22,7 @@
         <div class="input-group">
             <label for="field">Field:</label>
             <select id="field" name="field">
-                <option value="all"selected>All</option>
+                <option value="all">All</option>
                 <option value="chuau-1">Chuau-1</option>
                 <option value="sq7">SQ7</option>
             </select>
@@ -30,19 +30,19 @@
 
         <div class="input-group">
             <label for="start-date">Start Date:</label>
-            <input type="date" id="start-date" name="start-date" value="2020-05-05" min="2014-01-01" max="2022-01-01">
+            <input type="date" id="start-date" name="start-date" v-model="reportStartDate" min="2014-01-01" max="2022-01-01">
         </div>
 
         <div class="input-group">
             <label for="end-date">End Date:</label>
-            <input type="date" id="end-date" name="end-date" value="2020-05-15" min="2020-05-05" max="2022-01-01">
+            <input type="date" id="end-date" name="end-date" v-model="reportEndDate" min="2020-05-05" max="2022-01-01">
         </div>
 
         <div class="input-group">
             <button type="submit">Generate Report</button>
         </div>
 
-        <h1>My Sample Harvest Report</h1>
+        <h1>{{ reportTitle }}</h1>
 
         <h3>Details:</h3>
         <br>
@@ -52,9 +52,9 @@
             <li><strong>User:</strong> manager1</li>
             <li><strong>Language:</strong> English</li>
             <br>
-            <li><strong>Start:</strong> 05/01/2018</li>
-            <li><strong>End:</strong> 05/15/2018</li>
-            <li><strong>Crop:</strong> Kale</li>
+            <li><strong>Start:</strong> {{ reportStartDate }}</li>
+            <li><strong>End:</strong> {{ reportEndDate }}</li>
+            <li><strong>Crop:</strong> {{ reportCrop }}</li>
         </ul>
 
         <h3>Harvest Data</h3>
@@ -88,11 +88,15 @@
         </table>
     </div>
 
+    <script src="https://unpkg.com/vue@2"></script>
     <script>
         var vm = new Vue({
             el: '#app',
             data: {
-                reportTitle: 'My Sample Harvest Report'
+                reportTitle: 'My Sample Harvest Report',
+                reportStartDate: '2020-05-05',
+                reportEndDate: '2020-05-15',
+                reportCrop: 'Kale'
             }
         });
     </script>
