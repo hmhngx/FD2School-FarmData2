@@ -66,12 +66,23 @@ function fd2_school_menu() {
         'type' => MENU_LOCAL_TASK,
         'page callback' => 'fd2_school_view',
         'page arguments' => array('html'),
-        'access arguments' => array('view fd2 school'),
-        'weight' => 110,
+        'access arguments' => array('View fd2 school'),
+        'weight' => 120,
+    );
+
+  $items['farm/fd2-school/vue1'] = array(
+        'title' => 'Vue1',
+        'type' => MENU_LOCAL_TASK,
+        'page callback' => 'fd2_school_view',
+        'page arguments' => array('vue1'),
+        'access arguments' => array('View fd2 school'),
+        'weight' => 120,
     );
 
   return $items;
+
 };
+
 
 // This function Loads the content for the sub-tab from the html file specified in the arguemnt.
 // It must be renamed in each module.
