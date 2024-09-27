@@ -3,6 +3,12 @@
     <p>This page is a <em>mockup</em> of a simplified harvest report.</p>
     <hr>
 
+    <style>
+        [v-cloak] {
+          display: none;
+        }
+      </style>
+
     <div id="app" v-cloak>
         
         <div class="input-group">
@@ -42,7 +48,7 @@
             <button type="submit">Generate Report</button>
         </div>
 
-        <h1>{{ reportTitle }}</h1>
+        <h1>{{ reportTitle ? reportTitle : "Mock Harvest Report" }}</h1>
 
         <h3>Details:</h3>
         <br>
