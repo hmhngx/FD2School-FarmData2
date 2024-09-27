@@ -19,18 +19,14 @@
         <div class="input-group">
             <label for="crop">Crop:</label>
             <select id="crop" name="crop" v-model="reportCrop">
-                <option value="broccoli">Broccoli</option>
-                <option value="kale">Kale</option>
-                <option value="peas">Peas</option>
+                <option v-for="crop in crops" :value="crop">{{crop}}</option>
             </select>
         </div>
 
         <div class="input-group">
             <label for="field">Field:</label>
-            <select id="field" name="field">
-                <option value="all">All</option>
-                <option value="chuau-1">Chuau-1</option>
-                <option value="sq7">SQ7</option>
+            <select id="field" name="field" v-model="reportField">
+                <option v-for="field in fields" :value="field">{{field}}</option>
             </select>
         </div>
 
@@ -76,10 +72,10 @@
                 </tr>
             </thead>
             <tbody><style>
-                [v-cloak] {
-                  display: none;
-                }
-              </style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
                 <tr>
                     <td>05/02/2018</td>
                     <td>Chuau-1</td>
@@ -96,6 +92,11 @@
                 </tr>
             </tbody>
         </table>
+
+        <h3>Farmers</h3>
+        <ul>
+            <li v-for="name in names" :key="name">{{ name }}</li>
+        </ul>
     </div>
 
     <script src="https://unpkg.com/vue@2"></script>
@@ -106,7 +107,11 @@
                 reportTitle: 'My Sample Harvest Report',
                 reportStartDate: '2020-05-05',
                 reportEndDate: '2020-05-15',
-                reportCrop: 'Kale'
+                reportCrop: 'Kale',
+                reportField: 'Chuau-1',
+                names: ["Joe", "Arun", "Ouwen", "Anh", "Sue"],
+                fields: ['All', 'Chuau-1', 'SQ7'],
+                crops: ['Broccoli', 'Kale', 'Peas']
             }
         });
     </script>
