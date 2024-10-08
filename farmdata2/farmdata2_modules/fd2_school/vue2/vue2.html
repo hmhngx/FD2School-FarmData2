@@ -44,6 +44,10 @@
             <button type="submit">Generate Report</button>
         </div>
 
+        <div class="input-group">
+            <button type="submit" @click='addHarvestLog'>Generate Report</button>
+        </div>
+
         <h1>{{ reportTitle ? reportTitle : "Mock Harvest Report" }}</h1>
 
         <h3>Details:</h3>
@@ -101,10 +105,18 @@
                 names: ["Joe", "Arun", "Ouwen", "Anh", "Sue"],
                 fields: ['All', 'Chuau-1', 'SQ7'],
                 crops: ['Broccoli', 'Kale', 'Peas'],
-                harvestLogs: [
-                { date: "2018-05-02", area: "Chuau-1", crop: "Kale", yield: 10, units: "Bunches" },
-                    { date: "2018-05-05", area: "SQ7", crop: "Kale", yield: 7, units: "Bunches" }
-                ]
+                harvestLogs: []
+            },
+            methods: {
+                addHarvestLog() {
+                    this.harvestLogs.push({
+                        date: "2018-05-01", 
+                        area: "Orion-3", 
+                        crop: "Kale", 
+                        yield: 12, 
+                        units: "Bunches"
+                    })
+                }
             }
         });
         Vue.config.devtools = true;
