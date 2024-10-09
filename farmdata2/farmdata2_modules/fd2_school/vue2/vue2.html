@@ -32,12 +32,19 @@
 
         <div class="input-group">
             <label for="start-date">Start Date:</label>
-            <input type="date" id="start-date" name="start-date" v-model="reportStartDate" min="2014-01-01" max="2022-01-01">
+            <input
+                type="date"
+                id="start-date"
+                name="start-date"
+                v-model="reportStartDate"
+                :max="reportEndDate"
+                min="2014-01-01"
+            />
         </div>
 
         <div class="input-group">
             <label for="end-date">End Date:</label>
-            <input type="date" id="end-date" name="end-date" v-model="reportEndDate" min="2020-05-05" max="2022-01-01">
+            <input type="date" id="end-date" name="end-date" v-model="reportEndDate" :min="reportStartDate" max="2022-01-01"/>
         </div>
 
         <div class="input-group">
