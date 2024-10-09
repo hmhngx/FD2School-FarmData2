@@ -41,11 +41,7 @@
         </div>
 
         <div class="input-group">
-            <button type="submit">Generate Report</button>
-        </div>
-
-        <div class="input-group">
-            <button type="submit" @click='addHarvestLog'>Generate Report</button>
+            <button type="submit" @click='generateReport'>Generate Report</button>
         </div>
 
         <h1>{{ reportTitle ? reportTitle : "Mock Harvest Report" }}</h1>
@@ -112,7 +108,7 @@
                     this.harvestLogs.push({
                         date: "2018-05-01", 
                         area: "Orion-3", 
-                        crop: "Kale", 
+                        crop: this.reportCrop, 
                         yield: 12, 
                         units: "Bunches"
                     })
