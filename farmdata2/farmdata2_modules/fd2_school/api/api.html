@@ -57,9 +57,9 @@
         <br>
 
         <ul>
-            <li><strong>Farm:</strong> Sample Farm</li>
-            <li><strong>User:</strong> manager1</li>
-            <li><strong>Language:</strong> English</li>
+            <li><strong>Farm:</strong> {{ reportFarm }}</li>
+            <li><strong>User:</strong> {{ reportUser }}</li>
+            <li><strong>Language:</strong> {{ reportLanguage }}</li>
             <br>
             <li><strong>Start:</strong> {{ reportStartDate }}</li>
             <li><strong>End:</strong> {{ reportEndDate }}</li>
@@ -105,6 +105,7 @@
     </div>
 
     <script src="https://unpkg.com/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         var vm = new Vue({
             el: '#app',
@@ -114,6 +115,9 @@
                 reportEndDate: '2020-05-15',
                 reportCrop: 'Kale',
                 reportField: 'Chuau-1',
+                reportFarm: '',
+                reportUser: '',
+                reportLanguage: '',
                 names: ["Joe", "Arun", "Ouwen", "Anh", "Sue"],
                 fields: ['All', 'Chuau-1', 'SQ7'],
                 crops: ['Broccoli', 'Kale', 'Peas'],
@@ -121,15 +125,27 @@
             },
             methods: {
                 generateReport: function()  {
-                    this.harvestLogs.push({
-                        date: "2018-05-01", 
-                        area: "Orion-3", 
-                        crop: this.reportCrop, 
-                        yield: 12, 
-                        units: "Bunches"
+
+                    axios.get('/farm.json').then(response => {
+                        
+                        this.reportFarm = response.data.name || 'Unknown Farm';
+                        this.reportUser = response.data.user.username || 'Unknown User';
+                        this.reportLanguage = response.data.language || 'Unknown Language';
+
+                        this.harvestLogs.push({
+                            date: "2018-05-01", 
+                            area: "Orion-3", 
+                            crop: this.reportCrop, 
+                            yield: 12, 
+                            units: "Bunches"
+                        });
                     })
-                }
-            }
+                    .catch(error => {
+                    console.log("Error Occurred");
+                    console.log(error);
+                    });
+                    }
+                } 
         });
         Vue.config.devtools = true;
     </script>
