@@ -19,7 +19,7 @@
         <div class="input-group">
             <label for="crop">Crop:</label>
             <select id="crop" name="crop" v-model="reportCrop">
-                <option v-for="crop in crops" :value="crop">{{crop}}</option>
+                <option v-for="crop in cropNames" :value="crop">{{crop}}</option>
             </select>
         </div>
 
@@ -120,9 +120,26 @@
                 reportLanguage: '',
                 names: ["Joe", "Arun", "Ouwen", "Anh", "Sue"],
                 fields: ['All', 'Chuau-1', 'SQ7'],
-                crops: ['Broccoli', 'Kale', 'Peas'],
-                harvestLogs: []
+                harvestLogs: [],
+                idToCropMap: new Map()
             },
+            created() {
+                console.log("HarvestReport Vue instance created!");
+
+                getIDToCropMap().then(theMap => {
+                    this.idToCropMap = theMap;
+                    console.log("Crop Map fetched:", this.idToCropMap);
+                }).catch(error => {
+                    console.log("Error occurred while fetching crop map:", error);
+                });
+            },
+
+            computed: {
+                cropNames() {
+                    return Array.from(this.idToCropMap.values());
+                }
+            },
+
             methods: {
                 generateReport: function()  {
 
